@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"/>
+<title>Product Manager</title>
+<style>
+body{
+background-color:#d3d3d3;
+}
+.styled-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+.styled-table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+}
+.styled-table th,
+.styled-table td {
+    padding: 12px 15px;
+}
+.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+.styled-table tbody tr.active-row {
+    font-weight: bold;
+    color: #009879;
+}
+a:link, a:visited {
+  background-color: #f44336;
+  color: white;
+  padding: 10px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+a:hover, a:active {
+  background-color: red;
+}
+input[type=text] {
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+input[type=button], input[type=submit] {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 12px 20px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+</style>
+</head>
+<body>
+
+<div align="center">
+
+    <h1>Product List</h1>
+    <h5>Welcome to CRUD Application. </h5>
+    <br/>
+    <a href="users">Back</a>
+    &nbsp;
+    <a href="new">Create New Product</a>
+    &nbsp;
+    <a href="export">Export to CSV</a>
+    &nbsp;
+    <a href="pdf">PDF Export</a>
+    &nbsp;
+    <a href="productinfo">CSV Updated Data</a>
+    <br/><br/>
+    
+    <form th:action="@{/details}">
+	 <input type="text" name="keyword" id="keyword" size="50" th:value="${keyword}" required placeholder="Search/Filter here"/>
+	&nbsp;
+	
+	<input type="submit" value="Search"/>
+	&nbsp;
+	<input type="button" value="Clear" id="btnClear" onclick="clearSearch()"/>
+	
+	
+	</form>
+    <br/><br/>
+    <table class="styled-table">
+        <thead>
+            <tr>
+                <th>Product ID</th>
+                <th>Name</th>
+                <th>Brand</th>
+                <th>Made In</th>
+                <th>Price</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="product : ${listProducts}" class="active-row">
+            	<td th:text="${product.id}">Product ID</td>
+                <td th:text="${product.name}">Name</td>
+                <td th:text="${product.brand}">Brand</td>
+                <td th:text="${product.madein}">Made in</td>
+                <td th:text="${product.price}">Price</td>
+                <td>
+                	<a th:href="@{'/edit/' + ${product.id}}">Edit</a>
+                	&nbsp;&nbsp;&nbsp;
+                	<a th:href="@{'/delete/' + ${product.id}}">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>  
+<script type="text/javascript">
+	function clearSearch() {
+		window.location = "[[@{/details}]]";
+	}
+</script>  
+</body>
+<footer>
+<br/>
+<br/>
+<br/>
+<br/>
+<hr/>
+<center><p><b>Copyright © 2021</b> SpringBoot Product Management by <i>Milind Krishna </i>| All Rights Reserved</p></center>
+</footer>
+</html>

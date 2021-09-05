@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Welcome to SPM Home</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <style>
+    body{
+background-color:#d3d3d3;
+}
+a:link, a:visited {
+  background-color: #f44336;
+  color: white;
+  padding: 10px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+a:hover, a:active {
+  background-color: red;
+}
+    </style>
+</head>
+<body>
+<br>
+<br>
+<br>
+    <div class="container text-center">
+        <h1><b>Welcome to SPM</b></h1>
+        <h5>We respect your data & privacy</h5>
+        <br>
+        <h3><a th:href="@{/users}">List of Users</a></h3>
+        &nbsp;
+        <h3><a th:href="@{/register}">Register</a></h3>
+        &nbsp;
+        <h3><a th:href="@{/login}">Login</a></h3>
+    </div>
+     
+</body>
+<footer>
+<br/>
+<br/>
+<br/>
+<br/>
+<hr/>
+<center><p><b>Copyright - 2021</b> SpringBoot Product Management by <i>Milind Krishna </i>| All Rights Reserved</p></center>
+</footer>
+</html>
